@@ -1,0 +1,10 @@
+select distinct(city) from station where city not in (select distinct(city from station where regexp_like(city,'^[aeiou]'));
+
+select distinct city from station where regexp_like(city,'^[aeiou].*[aeiou]$');
+
+select distinct(city) from station where regexp_like(city,'^[aeiou']) and regexp_like(city,'[aeiou]$');
+
+
+"[ab]" means a or b. "^[ab]" means starts with a or b. "[ab]$" means ends with a or b. ".* " means "0 or more of any character".
+
+select distinct city from station where lower(left(city,1)) in ('a','e','i','o','u') and lower(right(city,1)) in ('a','e','i','o','u'); 
